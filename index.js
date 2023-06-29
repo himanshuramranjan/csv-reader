@@ -13,7 +13,7 @@ app.use(express.static('public'));
 app.use(methodOverride('_method'));
 
 // Set up routes
-app.use('/upload', uploadRoutes);
+app.use('/', uploadRoutes);
 app.use('/files', fileRoutes);
 
 // Start the server
