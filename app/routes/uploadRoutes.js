@@ -7,7 +7,7 @@ const upload = require('../utils/upload');
 const router = express.Router();
 
 router.get('/', uploadController.renderUpload);
-router.post('/', upload.array('csvFiles'), fileController.uploadFiles);
+router.post('/upload', upload.array('csvFiles'), fileController.uploadFiles);
 
 
 
