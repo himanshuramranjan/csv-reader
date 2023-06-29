@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Data from <%= filename %></title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .search-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .search-input {
+      padding: 8px;
+      width: 300px;
+    }
+
+    
+  </style>
+</head>
+<body>
+  <h1>Data from <%= filename %></h1>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+  </div>
+
+  <table>
+    <thead>
+      <% if (data.length > 0) { %>
+        <tr>
+          <% Object.keys(data[0]).forEach((header) => { %>
+            <% header.split(';').forEach((item) => { %>
+              <th><%= item %></th>
+            <% }); %>
+          <% }); %>
+        </tr>
+      <% } %>
+    </thead>
+    <tbody>
+      <% data.forEach((row) => { %>
+        <tr>
+          <% Object.values(row).forEach((value) => { %>
+            <% value.split(';').forEach((item) => { %>
+              <td><%= item %></td>
+            <% }); %>
+          <% }); %>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  <br>
+    <button onclick="location.href='/files'" class="btn">Go to Files Page</button>
+  <script src="/js/search.js"></script>
+</body>
+</html>
